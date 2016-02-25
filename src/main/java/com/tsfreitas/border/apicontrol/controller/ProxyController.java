@@ -10,20 +10,25 @@ import com.tsfreitas.border.apicontrol.service.SomewhereService;
 
 @RestController
 public class ProxyController {
-	
+
 	private SomewhereService service;
-	
+
 	@Autowired
 	public ProxyController(SomewhereService service) {
 		this.service = service;
 	}
-	
-	
-	
+
 	@RequestMapping("/resource/somewhere")
 	public List<String> getResourcesFromSomewhere() {
-		
+
 		return service.getResponseFromSomewhere();
 	}
 
+	
+	@RequestMapping("/resource/timeout")
+	public List<String> getResourcesFromTiemout() {
+
+		return service.getTimeOut();
+	}
+	
 }

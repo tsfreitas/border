@@ -23,7 +23,18 @@ public class SomewhereService {
 		
 		hasError = true;
 		
+		
 		return Arrays.asList("First", "Second", "Third");
+	}
+	
+	@HystrixCommand(fallbackMethod="fallbackResponse")
+	public List<String> getTimeOut() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+		}
+		
+		return Arrays.asList("should", "not", "see", "this");
 	}
 	
 	
